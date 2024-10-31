@@ -1,0 +1,5 @@
+*venv/
+.idea
+sample_data
+playground.py
+env_test.py
