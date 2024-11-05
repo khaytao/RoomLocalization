@@ -7,6 +7,7 @@ import pyroomacoustics as pra
 import os
 # from IPython.display import Audio
 import librosa
+from tqdm import tqdm
 from helper_functions import *
 
 WITH_PLOTS = False
@@ -121,3 +122,15 @@ eprp = np.transpose(expected_prp, [1, 2, 0])[:, :, :, np.newaxis]  # shape |M| *
 # prp - PRP data |M| x |K| x |T|
 readings_term_diff = prp[:, np.newaxis, :, :] - eprp
 # readings_term = readings_term_diff * np.conjugate(readings_term_diff)  # shape |M| x |P| x |T| X |K|
+
+#
+# readings_term = np.zeros(readings_term_diff.shape)
+#
+# size_M, size_P, size_K, size_T = readings_term.shape
+#
+#
+# for mm in tqdm(range(size_M)):
+#     for pp in range(size_P):
+#         for kk in range(size_K):
+#             for tt in range(size_T):
+#                 readings_term[mm, pp, kk, tt] = readings_term_diff[[mm, pp, kk, tt]] * np.conjugate(readings_term_diff[[mm, pp, kk, tt]])
